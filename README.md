@@ -1,6 +1,6 @@
 # Wine Class Predictor (Decision Tree) 🍷
 
-<img width="700" height="430" alt="image" src="https://github.com/user-attachments/assets/62aaf4e5-3129-4c00-96b5-95c618d317c2" />
+<img width="800" height="480" alt="image" src="https://github.com/user-attachments/assets/62aaf4e5-3129-4c00-96b5-95c618d317c2" />
 
 This project is a small end-to-end machine learning web app that predicts a wine class using a trained Decision Tree model.
 
