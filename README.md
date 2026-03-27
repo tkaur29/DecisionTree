@@ -1,10 +1,10 @@
-# Wine Class Predictor (Decision Tree)
+# Wine Class Predictor (Decision Tree) 🍷
 
-![alt text]({83D9545D-53FD-4E35-9924-D63B76685621}.png)
+<img width="700" height="430" alt="image" src="https://github.com/user-attachments/assets/62aaf4e5-3129-4c00-96b5-95c618d317c2" />
 
 This project is a small end-to-end machine learning web app that predicts a wine class using a trained Decision Tree model.
 
-## Features
+## Features ✨
 
 - Trains a multiclass Decision Tree classifier on Wine dataset from scikit-learn. (`train_model.ipynb`)
 - Uses three input features for prediction:
@@ -15,7 +15,7 @@ This project is a small end-to-end machine learning web app that predicts a wine
 - A Flask backend (`app.py`) that loads the trained model and exposes a prediction API `POST /predict`.
 - Includes an interactive frontend that calls the API and displays predicted class (`Class 0`, `Class 1`, or `Class 2`).
 
-## Tech Stack
+## Tech Stack 👩🏻‍💻
 
 - Python
 - Flask
@@ -33,7 +33,7 @@ This project is a small end-to-end machine learning web app that predicts a wine
 5. `app.py` loads `model.pkl` on startup.
 6. The UI sends feature values to `POST /predict`, and the backend returns the predicted class.
 
-## Setup instructions
+## Setup instructions ⚙️
 ### Train the Model
 
 If `model.pkl` is missing or you want to retrain:
@@ -55,5 +55,6 @@ Then open your browser at:
 `http://127.0.0.1:5000/`
 
 
-## Pro tip (optional) : Use ngrok tunneling to get instant public link for your localhost
+
+> Pro tip (optional) : Use ngrok tunneling to get instant public link for your localhost
 
