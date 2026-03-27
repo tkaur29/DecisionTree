@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Class Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <div class="card-header">
+        <p class="kicker">Decision Tree Model</p>
+        <h1>Wine Class Predictor</h1>
+        <p class="subtitle">Adjust the features and run a prediction.</p>
+    </div>
+
+    <div class="form">  <!--or create a form element if you want to submit via form -->
+        <div class="slider-group">
+        <label class="field-label">Alcohol <span id="a_val">13</span></label>
+        <input type="range" id="alcohol" min="11" max="15" step="0.1" value="13" oninput="updateValue('a_val', this.value)">
+        
+        <label class="field-label">Malic Acid <span id="m_val">2</span></label>
+        <input type="range" id="malic_acid" min="0.5" max="5" step="0.1" value="2" oninput="updateValue('m_val', this.value)">
+        
+        <label class="field-label">Color Intensity <span id="c_val">5</span></label>
+        <input type="range" id="color_intensity" min="1" max="13" step="0.1" value="5" oninput="updateValue('c_val', this.value)">
+        </div>
+
+        <button onclick="predict()">Run Prediction</button>
+    </div>
+
+    <div id="result" class="result">Prediction will appear here</div>
+</div>
+
+<script>
+async function predict() {
+    const alcohol = document.getElementById("alcohol").value;
+    const malic_acid = document.getElementById("malic_acid").value;
+    const color_intensity = document.getElementById("color_intensity").value;
+
+    const response = await fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            alcohol: parseFloat(alcohol),
+            malic_acid: parseFloat(malic_acid),
+            color_intensity: parseFloat(color_intensity)
+        })
+    });
+
+    const data = await response.json();
+
+    const resultDiv = document.getElementById("result");
+
+    let label = "";
+    let resultClass = "";
+
+    if (data.prediction === 0) {
+        label = "Class 0";
+        resultClass = "class-0";
+    } else if (data.prediction === 1) {
+        label = "Class 1";
+        resultClass = "class-1";
+    } else {
+        label = "Class 2";
+        resultClass = "class-2";
+    }
+
+    resultDiv.className = "result " + resultClass;
+    resultDiv.textContent = label;
+}
+
+function updateValue(id, value) {
+    document.getElementById(id).textContent = value;
+}
+</script>
+
+</body>
+</html>
